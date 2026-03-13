@@ -471,3 +471,25 @@ function switchCVTab(tab) {
     researchIframe.src = "about:blank";
   }
 }
+
+/* =============================================
+   HOME → PROJECTS DEEP LINK
+   ============================================= */
+function goToProjects() {
+  // First navigate to the Skills & Projects page
+  showPage("skills");
+
+  // Then scroll to the projects column after a short
+  // delay so the page has time to render
+  setTimeout(() => {
+    const projectsSection = document.querySelector(
+      "#skills-page .lg\\:col-span-3",
+    );
+    if (!projectsSection) return;
+
+    const offset = 100; // account for fixed navbar
+    const top =
+      projectsSection.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: "smooth" });
+  }, 150);
+}
